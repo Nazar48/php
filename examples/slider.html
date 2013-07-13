@@ -6,9 +6,10 @@
 	<style type="text/css">
 	  .slider {
 	  border: 1px solid gray;
-	  height: 520px;
+	  height: 500px;
 	  width: 700px;
-	  overflow-x: scroll;
+	  overflow-x: hidden;
+	  overflow-y: hidden;
 	  display: block;
 	  margin-left: auto;
 	  margin-right: auto;
@@ -17,9 +18,24 @@
 	  width: 2100px;
 	  }
 	</style>
+	<script type="text/javascript">
+        window.onload = function() {
+            window.setInterval(function() {
+                next_image(document.getElementById("slider"));
+            }, 1000);
+        }
+
+        function next_image(slider) {
+            if (slider.scrollLeft < 1400) {
+                slider.scrollLeft += 700;
+            } else {
+                slider.scrollLeft = 0;
+            }
+        }
+	</script>
   </head>
   <body>
-	<div class="slider">
+	<div class="slider" id="slider">
 	  <div class="holder">
 		<img src="slide-01.jpg"><img src="slide-14.jpg"><img src="slide-15.jpg">
 	  </div>
