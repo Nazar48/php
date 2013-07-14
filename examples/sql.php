@@ -15,4 +15,9 @@ function query_db($query) {
 
 $data = query_db('select * from products where category="Аминокислоты"');
 
+$menu = query_db('select distinct category from products');
+
+
+
+
 ?>
