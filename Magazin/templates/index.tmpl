@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>Магазин спортивного питания</title>
-        <link href='style.css' rel='stylesheet' type='text/css' />
-        <link href="slider.css" rel="stylesheet" type="text/css"/>
-        <script src="slider.js"></script>
+        <link href='styles/style.css' rel='stylesheet' type='text/css' />
+        <link href="styles/slider.css" rel="stylesheet" type="text/css"/>
+        <script src='js/slider.js'></script>
     </head>
     <body>
         <div id="wrap">
@@ -53,18 +53,13 @@
                     <li><a href="#">Главная</a></li>
                     <li><a href="#">Категории</a>
                         <ul>
-                            <li><a  href="#">Протеины</a></li>
-                            <li><a  href="#">Гейнеры</a></li>
-                            <li><a  href="#">Креатин</a></li>
-                            <li><a  href="#">Аминокислоты</a></li>
-                            <li><a  href="#">Глютамин</a></li>
-                            <li><a  href="#">Витамины и минералы</a></li>
-                            <li><a  href="#">Предтренеровочные комплексы</a></li>
-                            <li><a  href="#">Бустеры тестостерона</a></li>
-                            <li><a  href="#">Энергетики</a></li>
-                            <li><a  href="#">Для связок и суставов</a></li>
-                            <li><a  href="#">Жиросжигатели</a></li>
-                            <li><a  href="#">Другое</a></li>
+<?php
+
+foreach ($sorted_categories as $c) {
+    print '<li><a href="?category=' . $c . '">' . $c . "</a><li>\n";
+}
+
+?>
                         </ul>
                     </li>
                     <li><a href="#">Производители</a>
