@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title></title>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+        window.onload = function() {
+            window.setInterval(function() {
+                next_image(document.getElementById("slider"));
+            }, 2000);
+        }
+
+        function next_image(slider) {
+            if (slider.scrollLeft < 1400) {
+                slider.scrollLeft += 700;
+            } else {
+                slider.scrollLeft = 0;
+            }
+        }
+	</script>
+ 
