@@ -23,5 +23,6 @@ for ($menu as $key => $val) {
 	echo '<li><a  href="#">' + $val + '</a></li>\n';
 }
 
+require_once('templates/index.tmpl');
 
 ?>
