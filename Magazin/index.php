@@ -29,6 +29,21 @@ while ($row = mysql_fetch_assoc($resource)) {
 }
 sort($sorted_categories, SORT_STRING);
 
+
+
+
+
+$resource1 = query_db('select distinct producer from products');
+
+$sorted_producers = array();
+
+while ($row1 = mysql_fetch_assoc($resource1)) {  
+    array_push($sorted_producers, $row1['producer']);
+}
+ sort($sorted_producers, SORT_STRING);
+ 
 require_once('templates/index.tmpl');
+
+
 
 ?>
