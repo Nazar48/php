@@ -3,15 +3,43 @@
     <head>
         <meta charset="utf-8">
         <title>Магазин спортивного питания</title>
+<?php
+
+switch($content) {
+   case 'slider':
+
+?>
         <link href='styles/style.css' rel='stylesheet' type='text/css' />
         <link href="styles/slider.css" rel="stylesheet" type="text/css"/>
         <script src='js/script.js'></script>
+<?php
+
+   break;
+   case 'grid':
+
+?>
+        <link href="styles/grid.css" rel="stylesheet" type="text/css"/>
+		<script src='js/grid.js'></script>
+		<script src="index.php?jsonp=parseResponse&category=<?= $category ?>"></script>
+		<script>
+		  window.onload = function() {
+		      generate_producers(document.getElementById('brands'));
+		      generate_grid(document.getElementById('grid'));
+		  };
+		</script>
+<?php
+
+   break;
+}
+
+?>
+
     </head>
     <body> 
         <div id="wrap">
             <div id="header">
                 <div id="header_top">
-                   <a href="index.html"><h1 id="name">Название магазина</h1></a>
+                   <a href="index.php"><h1 id="name">Название магазина</h1></a>
                     <div id="life">
                         <img src="img/t4.png"><span>(063)00-000-00</span> 
                     </div><!--end life-->
@@ -38,16 +66,11 @@
                     </div><!--end cart-->
                 </div><!--end header_bottom-->
             </div><!--end header-->
-            <div class="slider" id="slider">
-                <div class="holder">
-                    <a href='#'><img src="img/slide-01.jpg"></a><a href='#'><img src="img/slide-14.jpg"></a><a href='#'><img src="img/slide-15.jpg"></a>
-                </div><!--end holder-->
-           </div><!--end slider-->
-            <div id="menulist">
-                <ul>
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">Категории</a>
-                        <ul>
+<div id="menulist">
+  <ul>
+    <li><a href="#">Главная</a></li>
+    <li><a href="#">Категории</a>
+       <ul>
 <?php
 
 foreach ($sorted_categories as $c) {
@@ -55,12 +78,24 @@ foreach ($sorted_categories as $c) {
 }
 
 ?>
-                        </ul>
-                    </li>
-                    <li><a href="#">Доставка</a></li>
-                    <li><a href="#">Контакты</a></li>
-                </ul>
-            </div><!--end menulist-->
+       </ul>
+    </li>
+    <li><a href="#">Доставка</a></li>
+    <li><a href="#">Контакты</a></li>
+  </ul>
+</div><!--end menulist-->
+<?php
+
+switch($content) {
+   case 'slider':
+       require_once('templates/slider.tmpl');
+       break;
+   case 'grid':
+       require_once('templates/grid.tmpl');
+       break;
+}
+
+?>
             <div class="footer_top">
                 <div class="footer_block">
                     <h3>Вредно ли Спортивное питание?!</h3> 

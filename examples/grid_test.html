@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title></title>
+	<meta charset="UTF-8">
+	<link href='styles/reshetka.css' rel='stylesheet' type='text/css'>
+	<script src="js/grid.js"></script>
+	<script src="index.php?jsonp=parseResponse&category=Аминокислоты"></script>
+	<script>
+	  window.onload = function() { generate_grid(document.getElementById('grid')); };
+    </script>
+  </head>
+  <body>
+	<ul class="tiny_products" id='grid'>
+	</ul>
+  </body>
+</html>

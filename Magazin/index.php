@@ -20,30 +20,37 @@ function query_db($query) {
 	return $result;
 }
 
-$resource = query_db('select distinct category from products');
+if (isset($_GET['jsonp'])) { // index.php?ajax=1&category=Аминокислоты
+    if (isset($_GET['category'])) {
+        $resource = query_db('select name,producer,description,price from products where category="' . $_GET['category'] . '";');
 
-$sorted_categories = array();
+        $data = array();
+        while ($row = mysql_fetch_assoc($resource)) {
+            array_push($data, $row);
+        }
 
-while ($row = mysql_fetch_assoc($resource)) {
-	array_push($sorted_categories, $row['category']);
+        echo $_GET['jsonp'] . '(' . json_encode($data) . ');';
+    }
+} else {
+
+    // меню категории
+
+    $resource = query_db('select distinct category from products');
+
+    $sorted_categories = array();
+
+    while ($row = mysql_fetch_assoc($resource)) {
+        array_push($sorted_categories, $row['category']);
+    }
+    sort($sorted_categories, SORT_STRING);
+
+    if (!isset($_GET['category'])) {
+        $content = 'slider';
+    } else {
+        $content = 'grid';
+        $category = $_GET['category'];
+    }
+    require_once('templates/index.tmpl');
 }
-sort($sorted_categories, SORT_STRING);
-
-
-
-
-
-$resource1 = query_db('select distinct producer from products');
-
-$sorted_producers = array();
-
-while ($row1 = mysql_fetch_assoc($resource1)) {  
-    array_push($sorted_producers, $row1['producer']);
-}
- sort($sorted_producers, SORT_STRING);
- 
-require_once('templates/index.tmpl');
-
-
 
 ?>
