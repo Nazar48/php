@@ -1,0 +1,39 @@
+/* 
+    Document   : Newsite
+    Created on : 08.07.2013, 11:06:52
+    Author     : Admin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+h1{
+    color:#ffcc00;
+    text-align:center;
+    letter-spacing:5px;
+    word-spacing:10px;
+}
+a:hover{
+    color:#ff0033;
+    text-decoration:none; 
+    
+}
+h1 span{
+    background-color:#cccccc
+}
+p{
+   font-family:Arial,sans-serif;
+   font-size:16px;
+   text-indent:40px;
+}
+p.style{
+    font-style:italic;
+}
+h2{
+    font-variant:small-caps;
+}
+.weight{
+    font-weight:900;
+}
+h3{
+  text-decoration:none;  
+}
+

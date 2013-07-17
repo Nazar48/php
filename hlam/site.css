@@ -1,0 +1,81 @@
+/* 
+    Document   : site
+    Created on : 05.07.2013, 17:41:21
+    Author     : Admin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+html{
+    background-color:#000000;
+    color:#FFFFFF;
+    }
+    
+table { 
+    height:100%;
+    width: 100%;
+    vertical-align:top;
+    color: gold;
+    border-collapse:collapse;
+}
+td{
+    vertical-align:top; 
+}
+#header{
+    height:100px;
+    }
+#leftmenu{
+    width:250px;
+}
+#basiccontent{
+    color: aqua;
+}
+.test{
+    border: 1px #CCFFFF solid;
+    margin: 5px;
+    
+}
+.test4{
+   background-color:#333333;
+   
+}
+.test3{
+    color:#ffff33;
+}
+.test3{
+    color:#ff0033;
+}
+.test1{
+    background-color:#FFFFFF !important;
+}
+li{
+   list-style: none;
+   border: 1px #339900 solid;
+   margin: 4px 0;
+}
+ul{
+    margin: 0;
+    padding: 4px;
+    
+}
+a{
+    color:#ffcc00;
+    height:34px;
+    display: block;
+    text-decoration: none;
+    background-color:#000033;
+    
+}
+a:hover{
+    background-color:#333366;   
+}
+#menulist a{
+ line-height:34px;
+ text-align:left;
+ padding:0 20px; 
+}
+
+
+
+    
+
+
