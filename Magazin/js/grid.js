@@ -79,7 +79,7 @@ function generate_cell(struct) {
 
 	el_ = document.createElement('input');
 	el_.className = 'button';
-	el_.setAttribute('type', 'submit');
+	el_.setAttribute('type', 'button');
 	el_.setAttribute('value', 'В корзину');
 	el.appendChild(el_); // form.appendChild(input)
 

@@ -81,8 +81,8 @@ a:hover {
     font-size: 18px;
     white-space: nowrap;
 }
-.product .add_to_cart, .button {
-    background-color:#2774a4;
+.product .add_to_cart, .button  {
+    background-color:#2774a4; 
     border-style: none;
     border-width: 0;
     color: #FFFEFF;
