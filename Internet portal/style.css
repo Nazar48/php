@@ -1,0 +1,171 @@
+@import url("reset.css");
+body{
+    background-color:#ffffff;
+    font-family:Arial,Helveitca,sans-serif;
+    color:#4f5259;
+    min-height:100%;
+    padding-top:25px;
+    width:1400px;
+    height:1400px;
+}
+p{
+    font-size:14px;
+    color:#4f5259;
+    
+}
+a{
+    text-decoration:none;
+    outline:none;
+    color:grey;
+    font-size:14px;
+}
+a:hover{
+    text-decoration:none;
+    outline:none;
+    color:#d42907;
+    font-size:14px;
+}
+code{
+    font-family:monospace sans-serif;
+    color:#000;   
+}
+blockquote{
+    font-style:italic;
+    background:#ccc;
+    margin-left:20px;
+}
+/*menutop*/
+page{
+    width:880px;
+    height:100%;
+}
+
+#navigation_top ul{
+float:left;
+border:2px solid #ccc;
+height:50px;
+margin-left:300px;
+}
+#navigation_top ul li{
+    float:left;
+    padding-left:5px;
+    margin:20px 10px 0 10px;
+}
+#navigation_top a{
+    font-size:17px;
+    font-weight: 500;
+}
+/*zagolovok*/
+#zagolovok{
+    float:left;
+    background-color:#f53f1a;
+    border:2px solid #ccc;
+    height:82px;
+    width:500px;
+    margin-left:300px;
+    margin-top:20px;
+}
+#zagolovok h1{
+    font-size:40px;
+    color:#ffffff;
+    padding-left:30px;
+    padding-top:20px;
+}
+#search{
+    float:right;
+    margin-top:20px;
+    margin-right:340px;
+}
+#search .pole {
+    height:30px;
+    padding-left:30px;
+    width:200px;
+    color:#000;
+    
+}
+#zagolovok1 {
+    float:right;
+    background-color:#f53f1a;
+    border:2px solid #ccc;
+    height:50px;
+    width:230px;
+    margin-right:340px;
+    margin-top:25px;
+}
+#zagolovok1 h3{
+    font-size:25px;
+    color:#ffffff;
+    padding-left:13px;
+    padding-top:10px;
+}
+#content{
+    width:500px;
+    border:2px solid #ccc;
+    float:left;
+    margin-left:300px;
+    margin-top:10px;
+    height:550px;
+}
+#content p{
+    font-size:14px;
+    color:#000;
+    padding-left:10px;
+    padding-top:10px;
+}
+#navigation_right{
+    float:right;
+    border:2px solid #ccc;
+    height:210px;
+    width:180px;
+    margin-right:340px;
+    margin-top:10px;
+}
+#navigation_right ul li{
+    height:30px;
+    padding-left:20px;
+    padding-top:5px;
+    border-bottom:2px #ccc dotted;
+    margin:0 0px -2px 0px;
+}
+#zagolovok3{
+    float:right;
+    background-color:#f53f1a;
+    border:2px solid #ccc;
+    height:50px;
+    width:230px;
+    margin-right:340px;
+    margin-top:25px;
+}
+#zagolovok3 h3{
+   font-size:25px;
+    color:#ffffff;
+    padding-left:13px;
+    padding-top:10px; 
+}
+#email{
+    width:230px;
+    float:right;
+    border:2px solid #ccc;
+    height:150px;
+    margin-right:340px;
+    margin-top:10px;
+}
+.forma{
+   height:30px;
+   margin-top:49px;
+   margin-left:15px;
+   padding-left:20px;
+   width:170px;
+}
+.button{
+    height:30px;
+    width:60px;
+    margin-left:150px;
+    margin-top:10px;
+    color:#4f5259;
+}
+.button:hover{
+    color:#f53f1a;
+}
+
+    
