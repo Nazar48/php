@@ -174,11 +174,11 @@ input[type=button], input[type=button]:hover {
 }
 /*menuNavigation*/
 #menulist ul{
-    margin-left:950px;
-    padding:0px;
-    list-style:none;
-    width:200px;
-    height:500px;
+float:right;
+padding:0px;
+list-style:none;
+width:200px;
+height:500px;
 }
 #menulist  ul li {
   position: relative;
