@@ -57,6 +57,8 @@ if (isset($_GET['add_to_cart'])) {
     } elseif (isset($_GET['category'])) {
         $content = 'grid';
         $request = array( 'category' => $_GET['category'] );
+    } elseif (isset($_GET['delivery'])) {
+        $content = 'delivery';
     } else {
         $content = 'slider';
     }

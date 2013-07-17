@@ -33,9 +33,11 @@ switch($content) {
 <?php
 
    break;
-}
+   case 'delivery':
 
 ?>
+         <!-- DELIVERY STYLES -->
+<?php break; } ?>
 
     </head>
     <body> 
@@ -71,8 +73,8 @@ switch($content) {
             </div><!--end header-->
 <div id="menulist">
   <ul>
-    <li><a href="#">Главная</a></li>
-    <li><a href="#">Категории</a>
+    <li><a>Главная</a></li>
+    <li><a>Категории</a>
        <ul>
 <?php
 
@@ -83,25 +85,11 @@ foreach ($sorted_categories as $c) {
 ?>
        </ul>
     </li>
-    <li><a href="#">Доставка</a></li>
-    <li><a href="#">Контакты</a></li>
+    <li><a href="?delivery">Доставка</a></li>
+    <li><a>Контакты</a></li>
   </ul>
 </div><!--end menulist-->
-<?php
-
-switch($content) {
-   case 'slider':
-       require_once('templates/slider.tmpl');
-       break;
-   case 'grid':
-       require_once('templates/grid.tmpl');
-       break;
-   case 'dostavka':
-	   require_once('templates/dostavka.tmpl');
-	   break;
-}
-
-?>
+<?php require_once('templates/' . $content . '.tmpl'); ?>
             <div class="footer_top">
                 <div class="footer_block">
                     <h3>Вредно ли Спортивное питание?!</h3> 
