@@ -21,11 +21,13 @@ switch($content) {
         <link href="styles/grid.css" rel="stylesheet" type="text/css"/>
 		<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 		<script src='js/grid.js'></script>
-		<script src="index.php?jsonp=parseResponse&category=<?= $category ?>"></script>
+		<script src="index.php?jsonp=parseResponse&<?= key($request) ?>=<?= current($request) ?>"></script>
 		<script>
 		  window.onload = function() {
 		      generate_producers(document.getElementById('brands'));
-		      generate_grid(document.getElementById('grid'));
+
+		      _grid = document.getElementById('grid');
+		      regenerate_grid();
 		  };
 		</script>
 <?php
@@ -51,7 +53,7 @@ switch($content) {
                 <div id="header_bottom">
                     <div class="light">
                         <form>
-                            <span><input type="text" class="search square"><input type="button" value="Search"></span>
+                            <span><input type="text" class="search square" name="search"><input type="submit" value="Search"></span>
                         </form>
                     </div><!--end light-->
                     <div id="cart">

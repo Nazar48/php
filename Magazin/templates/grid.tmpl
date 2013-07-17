@@ -4,8 +4,8 @@
                </div><!--brands-->
                 <div class="sort">
                     Сортировать по
-                    <a class="selected" href="#">цене</a>
-                    <a href="#">названию</a>
+                    <a onClick='regenerate_grid("sort_by_price"); return false;'>цене</a>
+                    <a onClick='regenerate_grid("sort_by_name"); return false;'>названию</a>
                 </div><!--sort-->
                 <ul class="tiny_products" id='grid'>
                 </ul>

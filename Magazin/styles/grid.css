@@ -24,6 +24,9 @@
 #brands a:hover {
     color: #4CCCF1;
 }
+a:hover {
+	cursor: pointer;
+}
 .sort {
     color: #000000;
     font-size: 12px;

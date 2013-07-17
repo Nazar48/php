@@ -21,16 +21,17 @@ function query_db($query) {
 }
 
 if (isset($_GET['jsonp'])) { // index.php?ajax=1&category=Аминокислоты
-    if (isset($_GET['category'])) {
+    if (isset($_GET['search'])) {
+        $resource = query_db('select name,producer,description,price,category from products where name like "%' . $_GET['search'] . '%" or producer like "%' . $_GET['search'] . '%" or description like "%' . $_GET['search'] . '%" or category like "%' . $_GET['search'] . '%";');
+    } elseif (isset($_GET['category'])) {
         $resource = query_db('select name,producer,description,price from products where category="' . $_GET['category'] . '";');
-
-        $data = array();
-        while ($row = mysql_fetch_assoc($resource)) {
-            array_push($data, $row);
-        }
-
-        echo $_GET['jsonp'] . '(' . json_encode($data) . ');';
     }
+    $data = array();
+    while ($row = mysql_fetch_assoc($resource)) {
+        array_push($data, $row);
+    }
+
+    echo $_GET['jsonp'] . '(' . json_encode($data) . ');';
 } else {
 
     // меню категории
@@ -44,11 +45,14 @@ if (isset($_GET['jsonp'])) { // index.php?ajax=1&category=Аминокислот
     }
     sort($sorted_categories, SORT_STRING);
 
-    if (!isset($_GET['category'])) {
-        $content = 'slider';
-    } else {
+    if (isset($_GET['search'])) {
         $content = 'grid';
-        $category = $_GET['category'];
+        $request = array( 'search' => $_GET['search'] );
+    } elseif (isset($_GET['category'])) {
+        $content = 'grid';
+        $request = array( 'category' => $_GET['category'] );
+    } else {
+        $content = 'slider';
     }
     require_once('templates/index.tmpl');
 }

@@ -1,4 +1,6 @@
 var data;
+var grid_generated = 0;
+var _grid;
 
 function parseResponse(json) {
 	data = json;
@@ -31,7 +33,7 @@ function generate_cell(struct) {
 	var el, el_, div, cell;
 
 	el = document.createElement('img');
-	el.setAttribute('src', 'img/112.jpg');
+	el.setAttribute('src', 'img/332.jpg');
 	el.setAttribute('alt', 'elite');
 
 	el_ = document.createElement('a');
@@ -46,7 +48,12 @@ function generate_cell(struct) {
 	cell.appendChild(el); // div
 
 	el = document.createElement('a');
-	el.innerHTML = struct.producer + ' | ' + struct.name;
+	el_ = document.createElement('p');
+	el_.innerHTML = 'Название: ' + struct.name;
+	el.appendChild(el_);
+	el_ = document.createElement('p');
+	el_.innerHTML = 'Производитель: ' + struct.producer;
+	el.appendChild(el_);
 
 	el_ = document.createElement('h3');
 	el_.className = 'info';
@@ -82,19 +89,50 @@ function generate_cell(struct) {
 	return cell;
 }
 
-function generate_grid(el) {
-	data.forEach(function(e) {
-		el.appendChild(generate_cell(e));
-	});
+function regenerate_grid(sort_by) {
+	if (grid_generated) {
+		while (_grid.firstChild) {
+			_grid.removeChild(_grid.firstChild);
+		}
+	}
+
+	var sorted_data = data;
+	if (sort_by != undefined) {
+		sorted_data.sort(function(a, b) {
+			if (sort_by == 'sort_by_name') {
+				if (a.name < b.name) return -1;
+				if (a.name > b.name) return 1;
+				return 0;
+			}
+			if (sort_by == 'sort_by_price') {
+				return a.price - b.price;
+			}
+		});
+	}
+		
+	for (var i in sorted_data) {
+		_grid.appendChild(generate_cell(sorted_data[i]));
+	}
+	grid_generated = 1;
 }
 
 function generate_producers(el) {
-	data.forEach(function(e) {
-		var el_;
+	var a, i;
+	var producers = [];
 
-		el_ = document.createElement('a');
-		el_.innerHTML = e.producer;
+	// отбор уникальных продюсеров
+	for (i in data) {
+		if (producers.indexOf(data[i].producer) == -1) {
+			producers.push(data[i].producer);
+		}
+	}
 
-		el.appendChild(el_);
-	});
+	producers.sort();
+
+	for (i in producers) {
+		a = document.createElement('a');
+		a.innerHTML = producers[i];
+
+		el.appendChild(a);
+	}
 }

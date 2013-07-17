@@ -115,7 +115,7 @@ border-top-left-radius: 3px;
 border-top-right-radius: 0;
 }
 
-input[type=button], input[type=button]:hover {
+input[type=submit], input[type=submit]:hover {
     position:relative;
     left:-6px;
     border:1px solid #adc5cf;
