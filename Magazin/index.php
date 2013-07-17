@@ -20,11 +20,17 @@ function query_db($query) {
 	return $result;
 }
 
-if (isset($_GET['jsonp'])) { // index.php?ajax=1&category=Аминокислоты
+if (isset($_GET['add_to_cart'])) {
+    $resource = query_db('select price from products where id=' . $_GET['add_to_cart'] . ';');
+
+    while ($row = mysql_fetch_assoc($resource)) {
+        echo $row['price'];
+    }
+} elseif (isset($_GET['jsonp'])) { // index.php?ajax=1&category=Аминокислоты
     if (isset($_GET['search'])) {
-        $resource = query_db('select name,producer,description,price,category from products where name like "%' . $_GET['search'] . '%" or producer like "%' . $_GET['search'] . '%" or description like "%' . $_GET['search'] . '%" or category like "%' . $_GET['search'] . '%";');
+        $resource = query_db('select * from products where name like "%' . $_GET['search'] . '%" or producer like "%' . $_GET['search'] . '%" or description like "%' . $_GET['search'] . '%" or category like "%' . $_GET['search'] . '%";');
     } elseif (isset($_GET['category'])) {
-        $resource = query_db('select name,producer,description,price from products where category="' . $_GET['category'] . '";');
+        $resource = query_db('select * from products where category="' . $_GET['category'] . '";');
     }
     $data = array();
     while ($row = mysql_fetch_assoc($resource)) {

@@ -1,5 +1,6 @@
 var data;
 var grid_generated = 0;
+var cart_updated = 0;
 var _grid;
 
 function parseResponse(json) {
@@ -10,44 +11,53 @@ function parseResponse(json) {
 
 <li class="product">
   <div class="image">
-    <a href="#">
-      <img src="../img/112.jpg" alt="elite">
-    </a>
+    <img src="../img/112.jpg" alt="elite">
   </div>
   <div class="product_info">
     <h3 class="info">
-      <a href="#">Dymatize Elite Casein 1818 грамм</a>
+      <p>producer</p>
+      <p>name</p>
     </h3>
-    <form class="variants" action="/cart">
-      <span class="price">540,00
-	    <span class="currency">грн.</span>
-      </span>
-      <input class="button" type="submit" value="в корзину">
-    </form>
+    <span class="price">540,00грн.</span>
+    <button class="button" value="в корзину">
   </div>
 </li>
 
 */
 
+function update_cart(total) {
+	if (!cart_updated) {
+		document.getElementById('cart_text').innerHTML = 'В корзине:';
+		cart_updated = 1;
+	}
+	document.getElementById('cart_total').innerHTML = total + 'грн.';
+	
+}
+
+function add_to_cart(id) {
+	var request = XMLHttpRequest();
+	request.onload = function() { update_cart(this.responseText); }
+	request.open( 'POST', 'index.php?add_to_cart=' + id );
+	request.send();
+}
+
 function generate_cell(struct) {
-	var el, el_, div, cell;
+	var cell, div, el, el_;
 
 	el = document.createElement('img');
 	el.setAttribute('src', 'img/332.jpg');
 	el.setAttribute('alt', 'elite');
 
-	el_ = document.createElement('a');
+	el_ = document.createElement('div');
+	el_.className = 'image';
 	el_.appendChild(el); // img
-
-	el = document.createElement('div');
-	el.className = 'image';
-	el.appendChild(el_); // a
 
 	cell = document.createElement('li');
 	cell.className = 'product';
-	cell.appendChild(el); // div
+	cell.appendChild(el_); // div
 
-	el = document.createElement('a');
+	el = document.createElement('h3');
+	el.className = 'info';
 	el_ = document.createElement('p');
 	el_.innerHTML = 'Название: ' + struct.name;
 	el.appendChild(el_);
@@ -55,35 +65,21 @@ function generate_cell(struct) {
 	el_.innerHTML = 'Производитель: ' + struct.producer;
 	el.appendChild(el_);
 
-	el_ = document.createElement('h3');
-	el_.className = 'info';
-	el_.appendChild(el); // a
-
 	div = document.createElement('div');
 	div.className = 'product_info';
-	div.appendChild(el_); // h3
+	div.appendChild(el); // h3
 
 	el = document.createElement('span');
-	el.className = 'currency';
-	el.innerHTML = 'грн.';
+	el.className = 'price';
+	el.innerHTML = struct.price + 'грн.';
+	div.appendChild(el); // outer span
 
-	el_ = document.createElement('span');
-	el_.className = 'price';
-	el_.innerHTML = struct.price;
-	el_.appendChild(el); // inner span
+	el = document.createElement('button');
+	el.className = 'button';
+	el.innerHTML = 'В&nbsp;корзину';
+	el.onclick = function() { add_to_cart(struct.id); return false; };
+	div.appendChild(el); // button
 
-	el = document.createElement('form');
-	el.className = 'variants';
-	el.setAttribute('action', '/cart');
-	el.appendChild(el_); // span
-
-	el_ = document.createElement('input');
-	el_.className = 'button';
-	el_.setAttribute('type', 'button');
-	el_.setAttribute('value', 'В корзину');
-	el.appendChild(el_); // form.appendChild(input)
-
-	div.appendChild(el); // form
 	cell.appendChild(div);
 
 	return cell;
