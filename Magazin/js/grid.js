@@ -45,8 +45,7 @@ function generate_cell(struct) {
 	var cell, div, el, el_;
 
 	el = document.createElement('img');
-	el.setAttribute('src', 'img/332.jpg');
-	el.setAttribute('alt', 'elite');
+	el.setAttribute('src', 'img/' + struct.img);
 
 	el_ = document.createElement('div');
 	el_.className = 'image';

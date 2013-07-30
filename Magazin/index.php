@@ -28,7 +28,7 @@ if (isset($_GET['add_to_cart'])) {
     }
 } elseif (isset($_GET['jsonp'])) { // index.php?ajax=1&category=Аминокислоты
     if (isset($_GET['search'])) {
-        $resource = query_db('select * from products where name like "%' . $_GET['search'] . '%" or producer like "%' . $_GET['search'] . '%" or description like "%' . $_GET['search'] . '%" or category like "%' . $_GET['search'] . '%";');
+        $resource = query_db('select * from products where name like "%' . $_GET['search'] . '%" or producer like "%' . $_GET['search'] . '%" or description like "%' . $_GET['search']. '%" or img like "%' . $_GET['search'] . '%" or category like "%' . $_GET['search'] . '%";');
     } elseif (isset($_GET['category'])) {
         $resource = query_db('select * from products where category="' . $_GET['category'] . '";');
     }
